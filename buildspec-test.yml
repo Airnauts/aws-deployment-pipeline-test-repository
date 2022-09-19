@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+    install:
+      # Uncomment when they add .net6.0 support on AWS
+      #        runtime-versions:
+      #            dotnet: 6.0
+        commands:
+            - /usr/local/bin/dotnet-install.sh --channel LTS # Remove this line when they add .net6.0 support on AWS
+            - apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+            - apt-get -y update
+            - apt-get -y install make
+    build:
+        commands:
+          - make test
